@@ -155,18 +155,26 @@ const C = {
 
 function SlideGrid({ items }: { items: GridItem[] }) {
   return (
-    <div className="grid grid-cols-2 gap-3 w-full max-w-2xl">
+    <div className="flex flex-col gap-2 w-full max-w-2xl">
       {items.map((item, i) => (
         <div
           key={i}
-          style={{ background: C.surface, border: `1px solid ${C.border}` }}
-          className="rounded-xl p-4 flex flex-col gap-1 backdrop-blur-sm"
+          style={{ borderLeft: `3px solid ${C.accent}` }}
+          className="flex items-center gap-4 pl-4 py-3"
         >
-          <div style={{ color: C.accent }} className="font-semibold text-sm font-sans">
-            {item.label}
+          <div
+            style={{ color: C.bg, background: C.accent }}
+            className="w-7 h-7 rounded-sm flex items-center justify-center font-mono font-bold text-sm shrink-0"
+          >
+            {i + 1}
           </div>
-          <div style={{ color: C.textMid }} className="text-xs font-sans leading-5">
-            {item.desc}
+          <div className="flex flex-col gap-0.5">
+            <div style={{ color: C.text }} className="font-semibold text-sm font-sans">
+              {item.label}
+            </div>
+            <div style={{ color: C.textMid }} className="text-xs font-sans leading-5">
+              {item.desc}
+            </div>
           </div>
         </div>
       ))}
@@ -194,22 +202,23 @@ function SlideTimeline({ timeline }: { timeline: TimelineItem[] }) {
 
 function SlideStats({ stats }: { stats: StatItem[] }) {
   return (
-    <div className="grid grid-cols-2 gap-3 w-full max-w-2xl">
+    <div className="flex flex-col gap-2 w-full max-w-2xl">
       {stats.map((s, i) => (
         <div
           key={i}
           style={{ background: C.surface, border: `1px solid ${C.border}` }}
-          className="rounded-xl p-4 flex flex-col gap-1 backdrop-blur-sm"
+          className="flex items-center gap-4 rounded-lg px-4 py-3 backdrop-blur-sm"
         >
-          <div className="flex items-center justify-between">
-            <div style={{ color: C.text }} className="font-semibold text-sm font-sans">
-              {s.country}
-            </div>
-            <div style={{ color: C.accent }} className="font-mono text-sm font-bold">
-              {s.rank}
-            </div>
+          <div
+            style={{ color: C.accent, borderColor: C.accentDim }}
+            className="w-10 text-center font-mono font-bold text-lg shrink-0 border-r pr-4"
+          >
+            {s.rank}
           </div>
-          <div style={{ color: C.textMid }} className="text-xs font-sans">
+          <div style={{ color: C.text }} className="font-semibold text-sm font-sans flex-1">
+            {s.country}
+          </div>
+          <div style={{ color: C.textMid }} className="text-xs font-sans text-right">
             {s.detail}
           </div>
         </div>
