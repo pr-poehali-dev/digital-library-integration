@@ -41,8 +41,8 @@ const slides: Slide[] = [
     title: "Innovation",
     type: "cover",
     meta: {
-      student: "Student: John Smith",
-      teacher: "Teacher: Prof. Maria Johnson",
+      student: "Student: Trofimenko P.A., Group 6203",
+      teacher: "",
     },
   },
   {
@@ -232,7 +232,6 @@ export default function Index() {
             {slide.meta && (
               <div className="flex flex-col gap-2">
                 <div className="text-[rgba(55,50,47,0.65)] font-sans text-base">{slide.meta.student}</div>
-                <div className="text-[rgba(55,50,47,0.65)] font-sans text-base">{slide.meta.teacher}</div>
               </div>
             )}
           </div>
