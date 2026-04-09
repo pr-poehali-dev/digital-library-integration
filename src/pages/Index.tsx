@@ -2,7 +2,6 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 interface GridItem {
-  icon: string;
   label: string;
   desc: string;
 }
@@ -29,7 +28,6 @@ interface Slide {
   title: string;
   subtitle?: string;
   content?: string;
-  icon?: string;
   cta?: string;
   meta?: SlideMeta;
   items?: GridItem[];
@@ -53,18 +51,18 @@ const slides: Slide[] = [
     subtitle: "Turning ideas into value",
     content:
       "Innovation is the process of creating new solutions, products, or methods that deliver real value. It combines creativity, technology, and strategy to solve problems in ways the world has never seen before.",
-    icon: "Lightbulb",
     type: "intro",
   },
   {
     id: 3,
     title: "Types of Innovation",
     subtitle: "Different paths to change",
+    content: "There are several types of innovation, each addressing a different aspect of business or society. Understanding these types helps organizations choose the right strategy for growth.",
     items: [
-      { icon: "Layers", label: "Product Innovation", desc: "New goods or services" },
-      { icon: "Settings", label: "Process Innovation", desc: "Better ways of working" },
-      { icon: "Globe", label: "Business Model Innovation", desc: "New value delivery" },
-      { icon: "Users", label: "Social Innovation", desc: "Solutions for society" },
+      { label: "Product Innovation", desc: "Creating new or improved goods and services" },
+      { label: "Process Innovation", desc: "Finding better, more efficient ways of working" },
+      { label: "Business Model Innovation", desc: "Rethinking how value is created and delivered" },
+      { label: "Social Innovation", desc: "Developing solutions that benefit society" },
     ],
     type: "grid",
   },
@@ -72,6 +70,7 @@ const slides: Slide[] = [
     id: 4,
     title: "History of Innovation",
     subtitle: "Key milestones that changed the world",
+    content: "Throughout history, groundbreaking inventions have transformed the way people live and work. Each milestone opened new possibilities and set the stage for future discoveries.",
     timeline: [
       { year: "1440", event: "Printing Press — Gutenberg" },
       { year: "1769", event: "Steam Engine — James Watt" },
@@ -87,18 +86,18 @@ const slides: Slide[] = [
     subtitle: "What pushes innovation forward",
     content:
       "Innovation is driven by market demand, technological progress, global competition, and human curiosity. Organizations that invest in research and foster a culture of experimentation stay ahead of the curve.",
-    icon: "Zap",
     type: "intro",
   },
   {
     id: 6,
     title: "Innovation in Business",
     subtitle: "How companies grow through innovation",
+    content: "Businesses that innovate consistently outperform their competitors and build long-term resilience. Innovation is not just about new products — it reshapes entire industries and markets.",
     items: [
-      { icon: "TrendingUp", label: "Competitive Advantage", desc: "Stay ahead of rivals" },
-      { icon: "DollarSign", label: "Revenue Growth", desc: "New markets & products" },
-      { icon: "Shield", label: "Risk Reduction", desc: "Diversified solutions" },
-      { icon: "Star", label: "Brand Value", desc: "Reputation for excellence" },
+      { label: "Competitive Advantage", desc: "Stay ahead of rivals with unique offerings" },
+      { label: "Revenue Growth", desc: "Enter new markets and attract new customers" },
+      { label: "Risk Reduction", desc: "Diversify solutions to minimize dependency" },
+      { label: "Brand Value", desc: "Build a reputation for excellence and leadership" },
     ],
     type: "grid",
   },
@@ -108,18 +107,18 @@ const slides: Slide[] = [
     subtitle: "Digital transformation of our era",
     content:
       "Artificial Intelligence, Blockchain, IoT, and Cloud Computing are redefining industries. These technologies enable faster, smarter, and more scalable innovations across every sector of the global economy.",
-    icon: "Cpu",
     type: "intro",
   },
   {
     id: 8,
     title: "Barriers to Innovation",
     subtitle: "Challenges on the path to progress",
+    content: "Even the most forward-thinking organizations face obstacles when trying to innovate. Recognizing these barriers is the first step toward overcoming them.",
     items: [
-      { icon: "AlertTriangle", label: "Fear of Failure", desc: "Risk aversion culture" },
-      { icon: "Banknote", label: "Limited Funding", desc: "Lack of investment" },
-      { icon: "Lock", label: "Bureaucracy", desc: "Slow decision-making" },
-      { icon: "UserX", label: "Talent Gap", desc: "Missing skills and expertise" },
+      { label: "Fear of Failure", desc: "A risk-averse culture discourages new ideas" },
+      { label: "Limited Funding", desc: "Lack of investment slows down R&D efforts" },
+      { label: "Bureaucracy", desc: "Slow decision-making blocks creative initiatives" },
+      { label: "Talent Gap", desc: "Missing skills and expertise limit potential" },
     ],
     type: "grid",
   },
@@ -127,6 +126,7 @@ const slides: Slide[] = [
     id: 9,
     title: "Global Innovation Leaders",
     subtitle: "Countries shaping the future",
+    content: "Some countries consistently lead the world in innovation due to strong education, investment, and infrastructure. Their ecosystems attract talent and fuel breakthroughs across industries.",
     stats: [
       { country: "🇺🇸 USA", rank: "#1", detail: "Silicon Valley & Big Tech" },
       { country: "🇨🇳 China", rank: "#2", detail: "Manufacturing & AI" },
@@ -137,29 +137,24 @@ const slides: Slide[] = [
   },
   {
     id: 10,
-    title: "The Future of Innovation",
-    subtitle: "What lies ahead",
+    title: "Thank You for Your Attention",
+    subtitle: "The future belongs to those who innovate",
     content:
-      "The next wave of innovation will be driven by sustainability, human-AI collaboration, and decentralized technologies. Those who embrace change, learn continuously, and think boldly will shape tomorrow's world.",
-    icon: "Rocket",
-    cta: "The best way to predict the future is to create it.",
+      "Innovation is not a destination — it is a continuous journey of learning, experimenting, and improving. Together, we can build a smarter and better world through bold ideas and decisive action.",
     type: "final",
   },
 ];
 
 function SlideGrid({ items }: { items: GridItem[] }) {
   return (
-    <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
+    <div className="grid grid-cols-2 gap-3 w-full max-w-2xl">
       {items.map((item, i) => (
         <div
           key={i}
-          className="bg-white rounded-2xl p-5 shadow-[0_2px_12px_rgba(55,50,47,0.08)] border border-[rgba(55,50,47,0.08)] flex flex-col gap-2"
+          className="bg-white rounded-xl p-4 border border-[rgba(55,50,47,0.10)] flex flex-col gap-1"
         >
-          <div className="w-10 h-10 rounded-xl bg-[#F7F5F3] flex items-center justify-center">
-            <Icon name={item.icon} size={20} className="text-[#37322F]" />
-          </div>
           <div className="text-[#37322F] font-semibold text-sm font-sans">{item.label}</div>
-          <div className="text-[rgba(55,50,47,0.65)] text-xs font-sans leading-5">{item.desc}</div>
+          <div className="text-[rgba(55,50,47,0.60)] text-xs font-sans leading-5">{item.desc}</div>
         </div>
       ))}
     </div>
@@ -174,11 +169,7 @@ function SlideTimeline({ timeline }: { timeline: TimelineItem[] }) {
           <div className="w-14 text-right text-[#37322F] font-serif font-normal text-lg shrink-0">
             {item.year}
           </div>
-          <div className="w-3 h-3 rounded-full bg-[#37322F] shrink-0 relative">
-            {i < timeline.length - 1 && (
-              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[1px] h-8 bg-[rgba(55,50,47,0.2)]" />
-            )}
-          </div>
+          <div className="w-2 h-2 rounded-full bg-[rgba(55,50,47,0.40)] shrink-0" />
           <div className="text-[rgba(55,50,47,0.80)] text-sm font-sans">{item.event}</div>
         </div>
       ))}
@@ -188,17 +179,17 @@ function SlideTimeline({ timeline }: { timeline: TimelineItem[] }) {
 
 function SlideStats({ stats }: { stats: StatItem[] }) {
   return (
-    <div className="grid grid-cols-2 gap-4 w-full max-w-2xl">
+    <div className="grid grid-cols-2 gap-3 w-full max-w-2xl">
       {stats.map((s, i) => (
         <div
           key={i}
-          className="bg-white rounded-2xl p-5 shadow-[0_2px_12px_rgba(55,50,47,0.08)] border border-[rgba(55,50,47,0.08)] flex flex-col gap-1"
+          className="bg-white rounded-xl p-4 border border-[rgba(55,50,47,0.10)] flex flex-col gap-1"
         >
           <div className="flex items-center justify-between">
             <div className="text-[#37322F] font-semibold text-sm font-sans">{s.country}</div>
-            <div className="text-[#37322F] font-serif text-xl">{s.rank}</div>
+            <div className="text-[#37322F] font-serif text-base">{s.rank}</div>
           </div>
-          <div className="text-[rgba(55,50,47,0.65)] text-xs font-sans">{s.detail}</div>
+          <div className="text-[rgba(55,50,47,0.60)] text-xs font-sans">{s.detail}</div>
         </div>
       ))}
     </div>
@@ -214,13 +205,6 @@ export default function Index() {
 
   return (
     <div className="w-full min-h-screen bg-[#F7F5F3] flex flex-col items-center justify-center relative overflow-hidden px-4">
-      {/* Декоративные линии */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute left-[10%] top-0 bottom-0 w-[1px] bg-[rgba(55,50,47,0.06)]" />
-        <div className="absolute right-[10%] top-0 bottom-0 w-[1px] bg-[rgba(55,50,47,0.06)]" />
-        <div className="absolute top-[10%] left-0 right-0 h-[1px] bg-[rgba(55,50,47,0.06)]" />
-        <div className="absolute bottom-[10%] left-0 right-0 h-[1px] bg-[rgba(55,50,47,0.06)]" />
-      </div>
 
       {/* Прогресс-точки */}
       <div className="fixed top-6 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
@@ -241,17 +225,14 @@ export default function Index() {
         {/* COVER */}
         {slide.type === "cover" && (
           <div className="flex flex-col items-center gap-8 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-white shadow-[0_4px_24px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center">
-              <Icon name="Lightbulb" size={28} className="text-[#37322F]" />
-            </div>
-            <div className="text-[#37322F] font-serif text-[72px] sm:text-[96px] leading-none font-normal">
+            <div className="text-[#37322F] font-serif text-[80px] sm:text-[100px] leading-none font-normal">
               {slide.title}
             </div>
-            <div className="w-16 h-[1px] bg-[rgba(55,50,47,0.2)]" />
+            <div className="w-12 h-[1px] bg-[rgba(55,50,47,0.25)]" />
             {slide.meta && (
               <div className="flex flex-col gap-2">
-                <div className="text-[rgba(55,50,47,0.70)] font-sans text-base">{slide.meta.student}</div>
-                <div className="text-[rgba(55,50,47,0.70)] font-sans text-base">{slide.meta.teacher}</div>
+                <div className="text-[rgba(55,50,47,0.65)] font-sans text-base">{slide.meta.student}</div>
+                <div className="text-[rgba(55,50,47,0.65)] font-sans text-base">{slide.meta.teacher}</div>
               </div>
             )}
           </div>
@@ -259,17 +240,14 @@ export default function Index() {
 
         {/* INTRO */}
         {slide.type === "intro" && (
-          <div className="flex flex-col items-center gap-8 text-center">
-            <div className="w-12 h-12 rounded-xl bg-white shadow-[0_2px_16px_rgba(55,50,47,0.10)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center">
-              <Icon name={slide.icon || "Star"} size={22} className="text-[#37322F]" />
-            </div>
+          <div className="flex flex-col items-center gap-6 text-center">
             <div className="flex flex-col gap-2">
               <div className="text-[#37322F] font-serif text-[48px] sm:text-[56px] leading-tight font-normal">
                 {slide.title}
               </div>
-              <div className="text-[rgba(55,50,47,0.55)] font-sans text-base">{slide.subtitle}</div>
+              <div className="text-[rgba(55,50,47,0.50)] font-sans text-base">{slide.subtitle}</div>
             </div>
-            <div className="w-full max-w-xl text-[rgba(55,50,47,0.80)] font-sans text-lg leading-8">
+            <div className="w-full max-w-xl text-[rgba(55,50,47,0.75)] font-sans text-base leading-7">
               {slide.content}
             </div>
           </div>
@@ -277,63 +255,70 @@ export default function Index() {
 
         {/* GRID */}
         {slide.type === "grid" && slide.items && (
-          <div className="flex flex-col items-center gap-8 w-full">
+          <div className="flex flex-col items-center gap-6 w-full">
             <div className="flex flex-col gap-2 text-center">
-              <div className="text-[#37322F] font-serif text-[44px] sm:text-[52px] leading-tight font-normal">
+              <div className="text-[#37322F] font-serif text-[40px] sm:text-[48px] leading-tight font-normal">
                 {slide.title}
               </div>
-              <div className="text-[rgba(55,50,47,0.55)] font-sans text-base">{slide.subtitle}</div>
+              <div className="text-[rgba(55,50,47,0.50)] font-sans text-sm">{slide.subtitle}</div>
             </div>
+            {slide.content && (
+              <div className="w-full max-w-xl text-center text-[rgba(55,50,47,0.70)] font-sans text-sm leading-6">
+                {slide.content}
+              </div>
+            )}
             <SlideGrid items={slide.items} />
           </div>
         )}
 
         {/* TIMELINE */}
         {slide.type === "timeline" && slide.timeline && (
-          <div className="flex flex-col items-center gap-8 w-full">
+          <div className="flex flex-col items-center gap-6 w-full">
             <div className="flex flex-col gap-2 text-center">
-              <div className="text-[#37322F] font-serif text-[44px] sm:text-[52px] leading-tight font-normal">
+              <div className="text-[#37322F] font-serif text-[40px] sm:text-[48px] leading-tight font-normal">
                 {slide.title}
               </div>
-              <div className="text-[rgba(55,50,47,0.55)] font-sans text-base">{slide.subtitle}</div>
+              <div className="text-[rgba(55,50,47,0.50)] font-sans text-sm">{slide.subtitle}</div>
             </div>
+            {slide.content && (
+              <div className="w-full max-w-xl text-center text-[rgba(55,50,47,0.70)] font-sans text-sm leading-6">
+                {slide.content}
+              </div>
+            )}
             <SlideTimeline timeline={slide.timeline} />
           </div>
         )}
 
         {/* STATS */}
         {slide.type === "stats" && slide.stats && (
-          <div className="flex flex-col items-center gap-8 w-full">
+          <div className="flex flex-col items-center gap-6 w-full">
             <div className="flex flex-col gap-2 text-center">
-              <div className="text-[#37322F] font-serif text-[44px] sm:text-[52px] leading-tight font-normal">
+              <div className="text-[#37322F] font-serif text-[40px] sm:text-[48px] leading-tight font-normal">
                 {slide.title}
               </div>
-              <div className="text-[rgba(55,50,47,0.55)] font-sans text-base">{slide.subtitle}</div>
+              <div className="text-[rgba(55,50,47,0.50)] font-sans text-sm">{slide.subtitle}</div>
             </div>
+            {slide.content && (
+              <div className="w-full max-w-xl text-center text-[rgba(55,50,47,0.70)] font-sans text-sm leading-6">
+                {slide.content}
+              </div>
+            )}
             <SlideStats stats={slide.stats} />
           </div>
         )}
 
         {/* FINAL */}
         {slide.type === "final" && (
-          <div className="flex flex-col items-center gap-8 text-center">
-            <div className="w-12 h-12 rounded-xl bg-white shadow-[0_2px_16px_rgba(55,50,47,0.10)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center">
-              <Icon name={slide.icon || "Rocket"} size={22} className="text-[#37322F]" />
-            </div>
+          <div className="flex flex-col items-center gap-6 text-center">
             <div className="flex flex-col gap-2">
-              <div className="text-[#37322F] font-serif text-[48px] sm:text-[56px] leading-tight font-normal">
+              <div className="text-[#37322F] font-serif text-[40px] sm:text-[52px] leading-tight font-normal">
                 {slide.title}
               </div>
-              <div className="text-[rgba(55,50,47,0.55)] font-sans text-base">{slide.subtitle}</div>
+              <div className="text-[rgba(55,50,47,0.50)] font-sans text-base">{slide.subtitle}</div>
             </div>
-            <div className="w-full max-w-xl text-[rgba(55,50,47,0.80)] font-sans text-lg leading-8">
+            <div className="w-full max-w-xl text-[rgba(55,50,47,0.75)] font-sans text-base leading-7">
               {slide.content}
             </div>
-            {slide.cta && (
-              <div className="mt-2 px-6 py-4 bg-white rounded-2xl shadow-[0_2px_16px_rgba(55,50,47,0.08)] border border-[rgba(55,50,47,0.08)] max-w-md">
-                <div className="text-[#37322F] font-serif text-lg italic">&ldquo;{slide.cta}&rdquo;</div>
-              </div>
-            )}
           </div>
         )}
       </div>
@@ -343,12 +328,12 @@ export default function Index() {
         <button
           onClick={prev}
           disabled={current === 0}
-          className="w-10 h-10 rounded-full bg-white shadow-[0_2px_12px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center disabled:opacity-30 hover:shadow-[0_4px_20px_rgba(55,50,47,0.16)] transition-shadow"
+          className="w-10 h-10 rounded-full bg-white border border-[rgba(55,50,47,0.12)] flex items-center justify-center disabled:opacity-30 hover:bg-[#F0EDEA] transition-colors"
         >
           <Icon name="ChevronLeft" size={18} className="text-[#37322F]" />
         </button>
 
-        <div className="px-4 py-1.5 bg-white rounded-full shadow-[0_2px_12px_rgba(55,50,47,0.08)] border border-[rgba(55,50,47,0.08)]">
+        <div className="px-4 py-1.5 bg-white rounded-full border border-[rgba(55,50,47,0.12)]">
           <span className="text-[#37322F] font-sans text-sm font-medium">
             {current + 1} / {slides.length}
           </span>
@@ -357,7 +342,7 @@ export default function Index() {
         <button
           onClick={next}
           disabled={current === slides.length - 1}
-          className="w-10 h-10 rounded-full bg-white shadow-[0_2px_12px_rgba(55,50,47,0.12)] border border-[rgba(55,50,47,0.08)] flex items-center justify-center disabled:opacity-30 hover:shadow-[0_4px_20px_rgba(55,50,47,0.16)] transition-shadow"
+          className="w-10 h-10 rounded-full bg-white border border-[rgba(55,50,47,0.12)] flex items-center justify-center disabled:opacity-30 hover:bg-[#F0EDEA] transition-colors"
         >
           <Icon name="ChevronRight" size={18} className="text-[#37322F]" />
         </button>
