@@ -138,9 +138,6 @@ const slides: Slide[] = [
   {
     id: 10,
     title: "Thank You for Your Attention",
-    subtitle: "The future belongs to those who innovate",
-    content:
-      "Innovation is not a destination — it is a continuous journey of learning, experimenting, and improving. Together, we can build a smarter and better world through bold ideas and decisive action.",
     type: "final",
   },
 ];
